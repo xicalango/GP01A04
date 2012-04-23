@@ -1,3 +1,4 @@
+package xx.graprog1;
 import xx.graprog1.gui.MorphFrame;
 
 

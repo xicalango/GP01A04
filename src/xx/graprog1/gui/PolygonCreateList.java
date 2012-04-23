@@ -7,6 +7,7 @@ import java.awt.Polygon;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class PolygonCreateList extends JPanel {
@@ -14,10 +15,10 @@ public class PolygonCreateList extends JPanel {
 	private PolygonPanel polygonPanel;
 	
 	private JList polygonList;
+	private JTextField newPointField;
 	private DefaultListModel polygonListModel;
 	
 	public PolygonCreateList(Polygon polygon) {
-		
 		setupGUI(polygon);
 	}
 	
@@ -27,13 +28,15 @@ public class PolygonCreateList extends JPanel {
 		polygonPanel = new PolygonPanel(polygon);
 		add(polygonPanel,BorderLayout.CENTER);
 		
-		
 		JPanel eastPanel = new JPanel(new BorderLayout());
 		
 		polygonListModel = buildListModel();
 		polygonList = new JList(polygonListModel);
 		
 		eastPanel.add(polygonList, BorderLayout.CENTER);
+		
+		newPointField = new JTextField();
+		eastPanel.add(newPointField, BorderLayout.SOUTH);
 		
 		add(eastPanel, BorderLayout.EAST);
 	}
@@ -53,6 +56,6 @@ public class PolygonCreateList extends JPanel {
 
 	public Polygon getPolygon() {
 		return polygonPanel.getPolygon();
-	}	
-	
+	}
+
 }

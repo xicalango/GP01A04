@@ -4,9 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Polygon;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import xx.graprog1.morphing.CubicMorphing;
+import xx.graprog1.morphing.MorphingFactory;
 
 public class MorphFrame extends JFrame implements MorphListener{
 
@@ -30,9 +32,10 @@ public class MorphFrame extends JFrame implements MorphListener{
 			new int[] { 75, 75, 25, 25 },
 			4);
 
+	private MorphingFactory morphingFactory = new MorphingFactory.Cubic();
+
 	private MorphPanel morphPanel;
 	private MorphControlPanel morphControlPanel;
-	
 	
 	public MorphFrame() {
 		setupGUI();
@@ -44,7 +47,7 @@ public class MorphFrame extends JFrame implements MorphListener{
 	private void setupGUI() {
 		JPanel p = new JPanel(new BorderLayout());
 		
-		morphPanel = new MorphPanel(new CubicMorphing(DEFAULT_POLYGON_A, DEFAULT_POLYGON_B, DEFAULT_POLYGON_C, DEFAULT_POLYGON_D));
+		morphPanel = new MorphPanel(morphingFactory.getMorphing(DEFAULT_POLYGON_A,DEFAULT_POLYGON_B,DEFAULT_POLYGON_C,DEFAULT_POLYGON_D));
 		p.add(morphPanel, BorderLayout.CENTER);
 		
 		morphControlPanel = new MorphControlPanel(this);
@@ -62,6 +65,9 @@ public class MorphFrame extends JFrame implements MorphListener{
 
 	@Override
 	public void requestNewPolygon() {
+		
+		//XXX JOptionPane.showInputDialog(this, "Select Morphing", "Morphing", JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Linear", "Quadratic", "Cubic" }, "Linear");
+		
 		new PolygonDialog(DEFAULT_POLYGON_A, DEFAULT_POLYGON_B);
 		
 	}

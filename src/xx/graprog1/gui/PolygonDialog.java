@@ -1,5 +1,6 @@
 package xx.graprog1.gui;
 
+import java.awt.GridLayout;
 import java.awt.Polygon;
 
 import javax.swing.JFrame;
@@ -9,8 +10,8 @@ import javax.swing.JSplitPane;
 public class PolygonDialog extends JFrame{
 
 
-	private PolygonPanel polygonPanelA;
-	private PolygonPanel polygonPanelB;
+	private PolygonCreateList polygonPanelA;
+	private PolygonCreateList polygonPanelB;
 	
 	private boolean valueValid = false;
 
@@ -28,15 +29,14 @@ public class PolygonDialog extends JFrame{
 	}
 	
 	private void setupGUI(Polygon a, Polygon b) {
-		JPanel p = new JPanel();
-		
-		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		
-		polygonPanelA = new PolygonPanel(a);
-		splitPane.setLeftComponent(polygonPanelA);
-		
-		p.add(splitPane);
-		
+		JPanel p = new JPanel(new GridLayout(1, 2));
+				
+		polygonPanelA = new PolygonCreateList(a);
+		p.add(polygonPanelA);
+
+		polygonPanelB = new PolygonCreateList(b);
+		p.add(polygonPanelB);
+
 		setContentPane(p);
 		pack();
 		

@@ -47,7 +47,7 @@ public abstract class AbstractMorphing implements Morphing, MorphFn{
 			final Point a = getPolygonAPoint(i);
 			final Point b = getPolygonBPoint(i);
 			
-			final Point newPoint = morphFn(a, b, t);
+			final Point newPoint = morphFn(a, b, i, t);
 			
 			p.addPoint(newPoint.x, newPoint.y);
 		}

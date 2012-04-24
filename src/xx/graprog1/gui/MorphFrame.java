@@ -6,7 +6,7 @@ import java.awt.Polygon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import xx.graprog1.morphing.SimpleMorphing;
+import xx.graprog1.morphing.CubicMorphing;
 
 public class MorphFrame extends JFrame implements MorphListener{
 
@@ -18,6 +18,16 @@ public class MorphFrame extends JFrame implements MorphListener{
 	private static final Polygon DEFAULT_POLYGON_B = new Polygon(
 			new int[] { 10, 100, 10, 100 },
 			new int[] { 10, 10, 100, 100 },
+			4);
+	
+	private static final Polygon DEFAULT_POLYGON_C = new Polygon(
+			new int[] { 25, 75, 25, 75 },
+			new int[] { 75, 75, 25, 25 },
+			4);
+	
+	private static final Polygon DEFAULT_POLYGON_D = new Polygon(
+			new int[] { 75, 25, 75, 25 },
+			new int[] { 75, 75, 25, 25 },
 			4);
 
 	private MorphPanel morphPanel;
@@ -34,7 +44,7 @@ public class MorphFrame extends JFrame implements MorphListener{
 	private void setupGUI() {
 		JPanel p = new JPanel(new BorderLayout());
 		
-		morphPanel = new MorphPanel(new SimpleMorphing(DEFAULT_POLYGON_A, DEFAULT_POLYGON_B));
+		morphPanel = new MorphPanel(new CubicMorphing(DEFAULT_POLYGON_A, DEFAULT_POLYGON_B, DEFAULT_POLYGON_C, DEFAULT_POLYGON_D));
 		p.add(morphPanel, BorderLayout.CENTER);
 		
 		morphControlPanel = new MorphControlPanel(this);

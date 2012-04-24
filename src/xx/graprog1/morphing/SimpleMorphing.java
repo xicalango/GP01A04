@@ -10,9 +10,9 @@ public class SimpleMorphing extends AbstractMorphing {
 	}
 
 	@Override
-	public Point morphFn(Point a, Point b, double t) {
-		int x = (int)((1-t)*a.x + t*b.x);
-		int y = (int)((1-t)*a.y + t*b.y);
+	public Point morphFn(Point a, Point b, int npoint, double t) {
+		final int x = (int)((1-t)*a.x + t*b.x);
+		final int y = (int)((1-t)*a.y + t*b.y);
 		
 		return new Point(x, y);
 	}
